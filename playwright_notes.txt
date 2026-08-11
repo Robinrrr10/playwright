@@ -1,0 +1,5 @@
+Notes about playwright
+----------------------
+
+We are going with the official document tutorials from here https://playwright.dev/docs/intro
+
