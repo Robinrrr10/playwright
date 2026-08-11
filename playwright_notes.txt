@@ -1,5 +1,15 @@
-Notes about playwright
+Notes about playwright 
 ----------------------
 
 We are going with the official document tutorials from here https://playwright.dev/docs/intro
 
+
+How we can create the project:
+Go the directory where you wanted to create your project
+Create a folder with your project name.
+Use below command to create playwright with typescript:
+
+npm init playwright@latest
+
+This will ask for few details. Give those.
+Then a simple playwright project will be created with basic samples
