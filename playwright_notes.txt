@@ -14,13 +14,60 @@ npm init playwright@latest
 This will ask for few details. Give those.
 Then a simple playwright project will be created with basic samples
 
+Most of configuration details are available on playwright.config.ts
+
 
 
 Below command is to run the test
 
 npx playwright test
 
-By default this will run on headless mode
+By default this will run on headless mode and run all tests and all project/browser configured in playwright.config.ts
+
+
+
+Headed mode:
+
+--headed    //this is to run in headed mode. So that we can see the execution in browser UI
+Eg:
+npx playwright test --headed
+
+
+Project or running in one browser:
+Eg:
+npx playwright test --project=chromium     
+
+//This will run the specific project or browser.
+//We can find the project configuration in playwright.config.ts file
+
+
+Running one file:
+npx playwright test <fileWithPath>
+Eg:
+npx playwright test tests/example.spec.ts
+
+//This way we can run one specific test file. Tests available in that file will run
+
+
+
+To run from playwright trace view:
+Eg:
+npx playwright test --ui
+
+//This will open the trace. Here we can select the test and we can run
+//This can help to view in trace, run, debug etc
+
+
+
+To view report:
+Eg:
+npx playwright show-report
+
+//We can use this command post test runs to view the report
+
+
+
+
 
 
 
