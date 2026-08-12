@@ -13,3 +13,17 @@ npm init playwright@latest
 
 This will ask for few details. Give those.
 Then a simple playwright project will be created with basic samples
+
+
+
+Below command is to run the test
+
+npx playwright test
+
+By default this will run on headless mode
+
+
+
+
+comments notes:
+npm init playwright@latest           //This is to create the fresh project
