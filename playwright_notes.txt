@@ -10,6 +10,7 @@ Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
 macOS 14 (Sonoma) or later.
 Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 or arm64).
 
+--
 
 How we can create the project:
 Go the directory where you wanted to create your project
@@ -23,7 +24,7 @@ Then a simple playwright project will be created with basic samples
 
 Most of configuration details are available on playwright.config.ts
 
-
+---
 
 Below command is to run the test
 
@@ -32,6 +33,7 @@ npx playwright test
 By default this will run on headless mode and run all tests and all project/browser configured in playwright.config.ts
 
 
+---
 
 Headed mode:
 
@@ -39,6 +41,7 @@ Headed mode:
 Eg:
 npx playwright test --headed
 
+---
 
 Project or running in one browser:
 Eg:
@@ -47,6 +50,7 @@ npx playwright test --project=chromium
 //This will run the specific project or browser.
 //We can find the project configuration in playwright.config.ts file
 
+---
 
 Running one file:
 npx playwright test <fileWithPath>
@@ -55,7 +59,7 @@ npx playwright test tests/example.spec.ts
 
 //This way we can run one specific test file. Tests available in that file will run
 
-
+---
 
 To run from playwright trace view:
 Eg:
@@ -64,7 +68,7 @@ npx playwright test --ui
 //This will open the trace. Here we can select the test and we can run
 //This can help to view in trace, run, debug etc
 
-
+---
 
 To view report:
 Eg:
@@ -72,12 +76,14 @@ npx playwright show-report
 
 //We can use this command post test runs to view the report
 
+---
 
 How to download and install new playwright browser and dependencies: //Use below 2 commands
 Eg:
 npm install -D @playwright/test@latest
 npx playwright install --with-deps
 
+---
 
 Use below command to see the version:
 Eg:
@@ -85,7 +91,7 @@ npx playwright --version
 
 //This will give the version
 
-
+----
 
 Below is the example script and the details
 
@@ -109,6 +115,55 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
+---
+
+To run specific test in a test file use test name or line number:
+
+Using line number:
+
+npx playwright test <fileWithPath>:<lineNumber>
+Eg:
+npx playwright test tests/example.spec.ts:10
+
+
+Using test name:
+
+npx playwright test <fileWithPath> -g "GiveTestNameHere"
+Eg:
+npx playwright test tests/example.spec.ts -g "get started link"
+
+---
+
+Workers:
+Workers is the number of parallel threads.
+Based on cores in CPU we can also give how many workers we need to run parallelly.
+So based on that value, test will run on given workers.
+If there are 6 test, and if we give 2 workers. it will 3 on one worker and other 3 on another worker.
+
+Below is the command to specific workers: 
+npx playwright test <fileWithPath> --workers:<NumberOfWorker>
+Eg:
+npx playwright test tests/example.spec.ts --workers:2
+//Here we have given 2 workers. So parallelly it will use 2 workers and run tests
+
+
+npx playwright test <fileWithPath> -j <NumberOfWorker>
+Eg:
+npx playwright test tests/example.spec.ts -j 2
+//Same here. Here we have given 2 workers. So parallelly it will use 2 workers and run tests
+
+
+Below is the command to specific % of CPU. Based on % given, this will use that many worker: 
+npx playwright test <fileWithPath> --workers:<GiveCPUPercentage>%
+Eg:
+npx playwright test tests/example.spec.ts --workers:25%
+//Here we have given to use 25% of the CPU. So based on number of cores, this will allocate that many cores.
+
+-------
 
 
 
+
+
+
+---
