@@ -268,7 +268,53 @@ tests/file5testHooksBeforeAndAfterAndDescribe.spec.ts
 
 ----------------
 
+Record the test (codegen)
+--
+playwright has codegen command to record and auto write the script
+
+Use below command for record and auto write the script
+npx playwright codegen <giveUrlToLaunch>
+Eg:
+npx playwright codegen https://demo.automationtesting.in
+
+This command will open the browser with playwright record related options and also playwright inspector for script section
+in browser, we can do the action which we need to performance and the script will be auto written in playwright inspector.
+We can also use assert visibility, assert text and asert value option in the record related menus for adding assertion.
+Once recording done, you can click stop.
+Then we can to the playwright inspector, there we can see the script. From there we can copy and use in the required automation.
 
 
+--------------------
+
+
+Generating locators during recording (codegen)
+--
+
+You can use the same command which we use for record and auto write the script
+Eg:
+npx playwright codegen <giveUrlToLaunch>
+Eg:
+npx playwright codegen https://demo.automationtesting.in
+
+This will open the browser with playwright record related options and the playwright inspectors
+Then click on stop recording button on browser.
+Go the place where we want to take the locator of the element
+Then click on "Pick Locator" option, then go the element which you want the locator. This will show the locator during hover itself
+Click the element for which you need the locator.
+Now we can see the locator in the playwright inpector on below in locator tab.
+We can click on copy option to copy that locator.
+
+
+---------------------------
+
+
+
+
+
+
+
+
+
+-------------------
 
 
