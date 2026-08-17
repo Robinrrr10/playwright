@@ -46,6 +46,8 @@ npx playwright test --headed
 Project or running in one browser:
 Eg:
 npx playwright test --project=chromium     
+or
+npx playwright test --project chromium
 
 //This will run the specific project or browser.
 //We can find the project configuration in playwright.config.ts file
@@ -61,12 +63,52 @@ npx playwright test tests/example.spec.ts
 
 ---
 
+To run multiple file:
+npx playwright test <file1WithPath> <file2WithPath>
+Eg:
+npx playwright test tests/example.spec.ts tests/file2tests.spec.ts
+
+//This way we can run multiple test file. Tests available in these file will run
+
+----
+
+To run multiple files in multiple directories:
+npx playwright test <directoryPath1> <directoryPath1>
+Eg:
+npx playwright test tests/mydirOne/ tests/mydirOne/
+
+//This way we can run tests files available in given directories
+
+----
+
+To run with matching keywords of file name:
+
+npx playwright test <key1> <key2>
+Eg:
+npx playwright test login auth
+
+//Whatever test file name contains login or auth will run
+
+----
+
 To run from playwright trace view:
 Eg:
 npx playwright test --ui
 
 //This will open the trace. Here we can select the test and we can run
 //This can help to view in trace, run, debug etc
+//We can also see line by line execution when we run single test from the playwright
+//This helps for debugging - viewing network, logs, automation line by line execution, screen etc
+//We can also click on the test and we can navigate to actions tab and then we can go to actions where we can debug the locator. Then we can click on locator and click circle button which is pick locator and then we can click on the UI to pick the locator
+Link for more details: https://playwright.dev/docs/running-tests#debug-tests-in-ui-mode
+
+
+---
+
+Above we can use along with headed mode as well
+Eg:
+npx playwright test --ui --headed
+This will open playwright ui mode and the browser while running
 
 ---
 
@@ -307,6 +349,23 @@ We can click on copy option to copy that locator.
 
 ---------------------------
 
+Use below command to run failed tests on last run:
+npx playwright test --last-failed
+//This will run failed tests on last run
+
+
+---------------------------
+
+If we are storing the tests on different directory use above same command with directory
+npx playwright test --last-failed --last-failed-file=<pathOfTheTestRunJsonFile>
+Eg:
+npx playwright test --last-failed --last-failed-file=.cache/last-run-shard-1.json
+
+//This way we can run failed run by giving specify the path of the run result
+//By default, the result will be available in test-results directory
+
+
+----------------------------
 
 
 
