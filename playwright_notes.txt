@@ -4,6 +4,13 @@ Notes about playwright
 We are going with the official document tutorials from here https://playwright.dev/docs/intro
 
 
+Pre-request Setup:
+Node.js: latest 22.x, 24.x or 26.x.
+Windows 11+, Windows Server 2019+ or Windows Subsystem for Linux (WSL).
+macOS 14 (Sonoma) or later.
+Debian 12 / 13, Ubuntu 22.04 / 24.04 / 26.04 (x86-64 or arm64).
+
+
 How we can create the project:
 Go the directory where you wanted to create your project
 Create a folder with your project name.
@@ -66,11 +73,42 @@ npx playwright show-report
 //We can use this command post test runs to view the report
 
 
+How to download and install new playwright browser and dependencies: //Use below 2 commands
+Eg:
+npm install -D @playwright/test@latest
+npx playwright install --with-deps
+
+
+Use below command to see the version:
+Eg:
+npx playwright --version
+
+//This will give the version
+
+
+
+Below is the example script and the details
+
+
+import { test, expect } from '@playwright/test';
+
+test('has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Playwright/);
+});
+
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Get started' }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+});
 
 
 
 
-
-
-comments notes:
-npm init playwright@latest           //This is to create the fresh project
