@@ -214,3 +214,61 @@ Eg:
 expect(success).toBeTruthy();
 
 -----
+
+Tests are Isolated:
+--
+Playwright test is based on concept of test fixture such as the inbuild fixture.
+Each test(each page variable is isolated) are isolated between tests due to browser context. This is equivalent to brand new browser.
+Every test get a fresh environment, even when multiple tests are in single BrowserContext
+
+Eg with explaination:
+
+import { test } from '@playwright/test';
+
+test('example test', async ({ page }) => {
+  // "page" belongs to an isolated BrowserContext, created for this specific test.
+});
+
+test('another test', async ({ page }) => {
+  // "page" in this second test is completely isolated from the first test.
+});
+
+---------------
+
+Test Hooks:
+--
+Below are some of the test hooks which can help in different cases
+
+test.describe()    - to declare group of tests
+test.beforeEach()  - This will run before each test
+test.afterEach()   - This will run after each test
+test.beforeAll()   - This will run before all test
+test.afterAll()    - This will run After all test
+
+Example:
+import { test, expect } from '@playwright/test';
+
+test.describe('navigation', () => {
+  test.beforeEach(async ({ page }) => {
+    // Go to the starting url before each test.
+    await page.goto('https://playwright.dev/');
+  });
+
+  test('main navigation', async ({ page }) => {
+    // Assertions use the expect API.
+    await expect(page).toHaveURL('https://playwright.dev/');
+  });
+});
+
+
+Example in below files
+tests/file3testHooksDescribe.spec.ts
+tests/file4testHooksBeforeAndAfter.spec.ts
+tests/file5testHooksBeforeAndAfterAndDescribe.spec.ts
+
+----------------
+
+
+
+
+
