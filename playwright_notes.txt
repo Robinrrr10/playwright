@@ -100,8 +100,8 @@ npx playwright test --ui
 //We can also see line by line execution when we run single test from the playwright
 //This helps for debugging - viewing network, logs, automation line by line execution, screen etc
 //We can also click on the test and we can navigate to actions tab and then we can go to actions where we can debug the locator. Then we can click on locator and click circle button which is pick locator and then we can click on the UI to pick the locator
+//For manually going step by step or line by line debugging use --debug
 Link for more details: https://playwright.dev/docs/running-tests#debug-tests-in-ui-mode
-
 
 ---
 
@@ -112,11 +112,31 @@ This will open playwright ui mode and the browser while running
 
 ---
 
+--debug:
+To debug line by line or executing line by line debugging we can use --debug command
+Eg:
+npx playwright test --debug
+or
+npx playwright test example.spec.ts --debug             //For debugging specific file
+or
+npx playwright test example.spec.ts:10 --debug          //For debugging specific test
+
+//This will open the browser and playwright inspector with automation source codegen
+//We can go line by line and we can see what is happening in browser.
+//This is more powerfull for debugging line by line
+//This will show line and the screen both. We can controll next step etc
+
+
+----
+
 To view report:
 Eg:
 npx playwright show-report
 
 //We can use this command post test runs to view the report
+//We can see passed and failed tests
+//we can see the error of failure or reason for failure
+//We can also filter with test name or error etc
 
 ---
 
