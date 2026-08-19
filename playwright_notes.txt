@@ -394,14 +394,64 @@ Here we can see the actions, screens during automation runs.
 This helps to view what happens during the run.
 We can check locators, network logs, automation source code, when test started failing etc
 Here you can see the details of the trace viewer https://playwright.dev/docs/trace-viewer-intro
- 
+
+By default, trace will be recroded in the first retry of the test. Mearning not at first run. Not at second retry. It records at first retry
+We can find this default configuration on playwright.config.ts like below
+ use: {
+    trace: 'on-first-retry',
+  },
+
+For more details about trace viewer refer below link
+https://playwright.dev/docs/trace-viewer
+
+---
+
+Generating trace file during run
+--trace on:
+
+This is used to record the trace
+For debugging locally, usually we can use --debug mode, but in CICD we will use --trace on.
+We can still use --trace on to record the trace during run even in local if we wanted.
+This will record in passed/failed in both case if we give --trace on
+
+npx playwright test --trace on
+
+By default playwright trace file will be recorded inside playwright-report/data folder in zip file.
 
 
+--------------------
 
+How to view playwright trace:
+--
+Open the report using below command
+npx playwright show-report
+There we can find "View Trace" near the test, by clicking this, it will open the trace viewer of that test
+(This will be available only if --trace is on or for failed retry case)
 
+In trace viewer we can check what happen to the test during the run.
+In top section it will timing with screen. We can click on any timing and we can view the screen
+Left side it will show all actions, we can click on any actions and we can see what screen during the action
+We can double click the action to see that screen and action clearly
+In metadata, we can see in time, platform, view port etc
+Center we can see the screen, in right side we can see play button and playback speed button
+Next to that we can see maximize button to show the UI in big size and we can open we can open developer inspector as well
+Below we can see the locator, which can be used to view the locator by clicking the circle button
+In call we can see the duration and parameter
+Logs we can see  logs of actions
+in console we can see the automation error and ui console error
+In network tab we can see all network/api calls
+In source  we can see the automation source code. We can click the timing in top and see what line it is
 
-
+All these are more useful for debugging the tests.
+This is the complete records of the tests
 
 -------------------
 
+retry:
+--
+We can find the retry option on playwright.config.ts, by default it will mension 0 retry when running local and 2 retry when running in cicd. We can modify this based on our requirement
+Eg:
+retries: process.env.CI ? 2 : 0,
+
+---------------------
 
