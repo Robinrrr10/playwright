@@ -387,6 +387,14 @@ npx playwright test --last-failed --last-failed-file=.cache/last-run-shard-1.jso
 
 ----------------------------
 
+Playwright trace viewer:
+--
+Playwright trace viewer is the GUI tool to view the recorded test execution.
+Here we can see the actions, screens during automation runs.
+This helps to view what happens during the run.
+We can check locators, network logs, automation source code, when test started failing etc
+Here you can see the details of the trace viewer https://playwright.dev/docs/trace-viewer-intro
+ 
 
 
 
