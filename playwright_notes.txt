@@ -457,9 +457,12 @@ retries: process.env.CI ? 2 : 0,
 
 Setting up CI:
 --
+link: https://playwright.dev/docs/ci-intro
 Playwright test can run on any CI
 Below we have sample yaml file which we can use and run from github actions
 .github\workflows\playwright.yml   - This is the file path
+We can add below file for running the playwright automation test on CI github
+
 
 name: Playwright Tests
 on:
@@ -490,5 +493,44 @@ jobs:
         retention-days: 30
 
 
+
+
+//Here to run/view from CI, we can go to the repo in github
+Navigate to actions
+There we can find this github workflow actions for github.
+To view the logs, we can click on the steps and we can see the logs of the github actions logs and automation logs
+We can download the artifact which has the report
+And we can extract in a folder
+Use below command to view the report
+npx playwright show-report folderNameWhereWeExtracted
+Eg:
+npx playwright show-report mytrace
+
+
+
 ----------------------
 
+How to setup playwright in VSCode and some tips
+--
+Open extension in VS code
+Install playwright which is from microsoft
+Then run below command to setup the new project
+Test: Install Playwright 
+
+
+While installing we can select what are all the browser required
+Once VS code extenstion is added, it will add the Test icon (chemical bottle icon) in the left side of VS code
+We can click that test icon, then we can run required tests.
+We can select required browser / project
+We can select the show browser (for running without headless)
+Has many option at bottom
+
+we can run single test or multiple test in the file
+
+We can also puth the breaking point and we can run with Debug Test and and we can debug
+Below we can also find the the record option and we can record the test which will record the script
+We can enable trace viewer to view in trace viewer
+We can use locator picker also here.
+
+
+----------------------
